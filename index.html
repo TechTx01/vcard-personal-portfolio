@@ -24,6 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link href="toast.style.min.css" rel="stylesheet">
+<script src="jquery.min.js"></script>
+<script src="toast.script.js"></script>
 </head>
 
 <body>
@@ -844,10 +847,16 @@
             success: function(response) {
                 // Handle success response
                 console.log(response);
+                $("#name").val('');
+        $("#email").val('');
+        $("#message").val('');
+        // $.Toast(title, message, type, options);
+$.Toast("Success", "success","Mail sent to manogar");
             },
             error: function(xhr, status, error) {
                 // Handle error
                 console.error(xhr, status, error);
+                $.Toast("Failed", "errortoast","Contact failed");
             }
         });
     });
