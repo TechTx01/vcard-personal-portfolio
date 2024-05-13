@@ -1,0 +1,20 @@
+name: Deploy Spring Boot App
+
+on:
+  push:
+    branches:
+      - master  # Adjust the branch as needed
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Specify the label of your self-hosted runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy static app
+        run: |
+          rm -rf /apps/webapp/manogar/*
+          cp * /apps/webapp/manogar/
+          sudo systemctl reload nginx
